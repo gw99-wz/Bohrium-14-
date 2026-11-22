@@ -1,0 +1,7 @@
+# Generated JSON/CSV must be byte-identical across platforms: the offsets in
+# document.json and the hashes derived from it are part of the evidence trail.
+* text=auto eol=lf
+
+*.pdf binary
+*.png binary
+*.zip binary

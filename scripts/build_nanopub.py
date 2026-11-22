@@ -665,7 +665,7 @@ def main(argv=None) -> int:
 
     if args.csv_out:
         with open(args.csv_out, "w", encoding="utf-8", newline="") as fh:
-            writer = csv.writer(fh)
+            writer = csv.writer(fh, lineterminator="\n")
             writer.writerow(
                 ["assertion_id", "assertion", "subject", "relation", "object", "page", "char_start", "char_end", "verified", "method", "confidence"]
             )

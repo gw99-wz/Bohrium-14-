@@ -24,8 +24,8 @@
     "status": "success",
     "status_reason": "all 5 assertion(s) carry verified evidence; 1 warning check(s)",
     "pipeline_version": "nanopub-reading/1.0.0",
-    "started_at": "2026-11-22T13:55:20Z",
-    "finished_at": "2026-11-22T13:55:20Z",
+    "started_at": "2026-11-22T13:59:36Z",
+    "finished_at": "2026-11-22T13:59:36Z",
     "inputs": [
       {
         "path": "C:\\Users\\TYTX\\Documents\\deepseek-harness\\default-workspace\\Bohrium-14-\\examples\\minimal\\paper.txt",
@@ -35,9 +35,9 @@
       },
       {
         "path": "C:\\Users\\TYTX\\Documents\\deepseek-harness\\default-workspace\\Bohrium-14-\\examples\\minimal\\assertions.json",
-        "sha256": "3a6981810d3335bddecd8fbc1741f909ca3cb53ed7257895ae66489f8df8478e",
+        "sha256": "5754ef2edc18fa22f9eb625705bcd646b5b4d56f4d8c518c4b21427b1433f29f",
         "kind": "assertions",
-        "bytes": 5602
+        "bytes": 5428
       }
     ],
     "counts": {
@@ -79,7 +79,7 @@
   },
   "nanopublication": {
     "id": "np:70b5a2a7f5ddf486",
-    "created_at": "2026-11-22T13:55:20Z",
+    "created_at": "2026-11-22T13:59:36Z",
     "generator": "nanopub-reading/1.0.0",
     "assertions": [
       {
@@ -479,7 +479,7 @@
   },
   "change_log": [
     {
-      "at": "2026-11-22T13:55:20Z",
+      "at": "2026-11-22T13:59:36Z",
       "change": "built result from 5 declared assertion(s)",
       "reason": "pipeline nanopub-reading/1.0.0"
     }

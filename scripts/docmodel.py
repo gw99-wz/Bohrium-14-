@@ -220,7 +220,9 @@ def locate_quote(page_text: str, quote: str) -> Dict[str, Any]:
 
 
 def write_json(path: str, obj: Any) -> None:
-    with open(path, "w", encoding="utf-8") as fh:
+    # newline="\n" keeps the bytes identical on Windows and POSIX, so that a
+    # document.json produced on either platform hashes and diffs the same way.
+    with open(path, "w", encoding="utf-8", newline="\n") as fh:
         json.dump(obj, fh, ensure_ascii=False, indent=2, sort_keys=False)
         fh.write("\n")
 
