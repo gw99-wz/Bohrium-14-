@@ -1,0 +1,16 @@
+SYNTHETIC EXAMPLE — NOT REAL RESEARCH
+
+This paragraph is written for the example only. The numbers and the study are invented
+so that the example can be shipped without any third-party text.
+
+We introduce a depth-pruned transformer variant called PruneFormer and evaluate it on a
+small translation benchmark. PruneFormer reaches 26.8 BLEU on the development split,
+which is 1.1 BLEU below the unpruned baseline. The pruning removes 38 percent of
+attention heads while keeping the parameter count unchanged.
+
+Training used four GPUs for eighteen hours. We report the median over five seeds and do
+not claim statistical significance. Removing the head-pruning step restores the lost BLEU,
+so the pruning itself explains the gap rather than the training budget.
+
+We conclude that depth pruning costs 1.1 BLEU in this setting and we do not claim that the
+cost transfers to larger benchmarks.

@@ -1,0 +1,103 @@
+{
+  "assertions": [
+    {
+      "text": "PruneFormer reaches 26.8 BLEU on the development split of the example benchmark.",
+      "subject": { "label": "PruneFormer", "entity_type": "model", "normalized": "pruneformer" },
+      "relation": { "type": "achieves" },
+      "object": { "label": "26.8 BLEU", "entity_type": "metric" },
+      "claim_count": 1,
+      "conditions": ["development split", "small translation benchmark"],
+      "scope": "one benchmark",
+      "evidence": [
+        { "sentence_ids": ["p001-b002s001"], "evidence_type": "direct" }
+      ],
+      "confidence": {
+        "level": "high",
+        "basis": "The sentence states the score and the split directly.",
+        "derived_from": "direct_statement"
+      }
+    },
+    {
+      "text": "The unpruned baseline outperforms PruneFormer by 1.1 BLEU on the development split.",
+      "subject": { "label": "unpruned baseline", "entity_type": "model" },
+      "relation": { "type": "outperforms" },
+      "object": { "label": "PruneFormer", "entity_type": "model", "normalized": "pruneformer" },
+      "claim_count": 1,
+      "conditions": ["development split"],
+      "scope": "one benchmark",
+      "evidence": [
+        { "sentence_ids": ["p001-b002s001"], "evidence_type": "direct" }
+      ],
+      "confidence": {
+        "level": "high",
+        "basis": "Stated as a gap of 1.1 BLEU below the unpruned baseline; direction inverted so that subject outperforms object.",
+        "derived_from": "direct_statement"
+      },
+      "notes": "The source sentence uses PruneFormer as the grammatical subject; the relation is expressed from the baseline's side to keep the direction faithful."
+    },
+    {
+      "text": "The pruning removes 38 percent of attention heads while keeping the parameter count unchanged.",
+      "subject": { "label": "attention-head pruning", "entity_type": "method" },
+      "relation": { "type": "reports" },
+      "object": { "label": "38 percent of attention heads removed", "entity_type": "quantity" },
+      "claim_count": 1,
+      "conditions": ["parameter count unchanged"],
+      "scope": "one reported configuration",
+      "evidence": [
+        { "sentence_ids": ["p001-b002s002"], "evidence_type": "direct" }
+      ],
+      "confidence": {
+        "level": "high",
+        "basis": "Stated directly.",
+        "derived_from": "direct_statement"
+      }
+    },
+    {
+      "text": "Training used four GPUs for eighteen hours.",
+      "subject": { "label": "training run", "entity_type": "method" },
+      "relation": { "type": "uses" },
+      "object": { "label": "four GPUs for eighteen hours", "entity_type": "quantity" },
+      "claim_count": 1,
+      "conditions": [],
+      "scope": "reported compute budget",
+      "evidence": [
+        { "sentence_ids": ["p001-b003s000"], "evidence_type": "direct" }
+      ],
+      "confidence": {
+        "level": "high",
+        "basis": "Stated directly.",
+        "derived_from": "direct_statement"
+      }
+    },
+    {
+      "text": "Head pruning itself causes the 1.1 BLEU gap, rather than the training budget.",
+      "subject": { "label": "head pruning", "entity_type": "method" },
+      "relation": { "type": "causes" },
+      "object": { "label": "1.1 BLEU gap", "entity_type": "quantity" },
+      "claim_count": 1,
+      "conditions": ["ablation: pruning step removed"],
+      "scope": "one ablation result",
+      "evidence": [
+        { "sentence_ids": ["p001-b003s002"], "evidence_type": "direct" }
+      ],
+      "confidence": {
+        "level": "medium",
+        "basis": "The sentence states the conclusion of an ablation but reports no separate numbers for the ablation run.",
+        "derived_from": "inference"
+      }
+    }
+  ],
+  "uncertainty": [
+    {
+      "kind": "not_reported_in_source",
+      "description": "The absolute BLEU of the unpruned baseline is not reported; only the 1.1 BLEU gap is. The baseline value is therefore left unstated rather than computed.",
+      "related_assertion_text": "The unpruned baseline outperforms PruneFormer by 1.1 BLEU on the development split.",
+      "human_takeover": "Ask the authors for the baseline number, or read it from the full results table if one exists."
+    },
+    {
+      "kind": "out_of_scope",
+      "description": "Statistical significance is explicitly not claimed by the text, so no significance assertion is emitted.",
+      "human_takeover": "Nothing to do; recorded so the absence is deliberate."
+    }
+  ]
+}

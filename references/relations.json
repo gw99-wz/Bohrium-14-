@@ -1,0 +1,79 @@
+{
+  "vocabulary": "nanopub-relations",
+  "version": "1.0",
+  "description": "Controlled relation types for assertion subject -> object edges. Closed list: a relation outside it is reported as in_vocabulary=false rather than renamed silently.",
+  "relations": {
+    "reports": {
+      "zh": "报告",
+      "description": "The subject reports, states or claims the object (the default for a sentence that asserts a result)."
+    },
+    "measures": {
+      "zh": "测量",
+      "description": "The subject measures or quantifies the object (a metric, quantity or value)."
+    },
+    "achieves": {
+      "zh": "达到",
+      "description": "The subject attains a stated performance, value or condition."
+    },
+    "outperforms": {
+      "zh": "优于",
+      "description": "The subject performs better than the object on a stated metric and setting."
+    },
+    "improves_over": {
+      "zh": "相对改善",
+      "description": "The subject shows an improvement relative to the object, possibly partial."
+    },
+    "equals": {
+      "zh": "等同",
+      "description": "The subject and object are stated to be equivalent on the stated dimension."
+    },
+    "causes": {
+      "zh": "导致",
+      "description": "The subject is stated to cause or produce the object."
+    },
+    "correlates_with": {
+      "zh": "相关",
+      "description": "The subject is stated to co-vary with the object; no causal claim is made."
+    },
+    "predicts": {
+      "zh": "预测",
+      "description": "The subject is stated to predict the object."
+    },
+    "requires": {
+      "zh": "需要",
+      "description": "The subject is stated to require or depend on the object."
+    },
+    "uses": {
+      "zh": "使用",
+      "description": "The subject uses or is built from the object (method, dataset, component)."
+    },
+    "trained_on": {
+      "zh": "训练于",
+      "description": "The subject was trained on the object (dataset, corpus, split)."
+    },
+    "evaluated_on": {
+      "zh": "评测于",
+      "description": "The subject was evaluated on the object (benchmark, dataset, split)."
+    },
+    "composed_of": {
+      "zh": "由…组成",
+      "description": "The subject is composed of the object (architecture, layers, ingredients)."
+    },
+    "assumes": {
+      "zh": "假设",
+      "description": "The subject assumes or presupposes the object as a condition."
+    },
+    "has_limitation": {
+      "zh": "有局限",
+      "description": "The subject is stated to have the object as a limitation or failure mode."
+    },
+    "contradicts": {
+      "zh": "相矛盾",
+      "description": "The subject contradicts or is incompatible with the object."
+    },
+    "derived_from": {
+      "zh": "源自",
+      "description": "The subject is derived from the object (analysis, transformation, citation)."
+    }
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "case_id": "example-minimal-01",
+  "status": "success",
+  "summary": {
+    "pass": 8,
+    "warn": 1,
+    "fail": 0
+  },
+  "checks": [
+    {
+      "rule_id": "QC-01-atomicity",
+      "result": "pass",
+      "detail": "0 assertion(s) look like more than one claim (claim_count>1, >320 chars, or several sentence endings)",
+      "assertion_ids": []
+    },
+    {
+      "rule_id": "QC-02-evidence-present",
+      "result": "pass",
+      "detail": "0 assertion(s) carry no evidence span",
+      "assertion_ids": []
+    },
+    {
+      "rule_id": "QC-03-evidence-verified",
+      "result": "pass",
+      "detail": "0 assertion(s) have at least one unverified span; 0 have none verified",
+      "assertion_ids": []
+    },
+    {
+      "rule_id": "QC-04-relation-vocabulary",
+      "result": "pass",
+      "detail": "0 assertion(s) use a relation outside the controlled vocabulary",
+      "assertion_ids": []
+    },
+    {
+      "rule_id": "QC-05-subject-in-evidence",
+      "result": "warn",
+      "detail": "3 assertion(s): subject label not literally present in its evidence (possible subject/relation confusion)",
+      "assertion_ids": [
+        "asrt:a9e8aa6807975bc4",
+        "asrt:4db06b49d27f2594",
+        "asrt:9409229f9dcce512"
+      ]
+    },
+    {
+      "rule_id": "QC-06-provenance-complete",
+      "result": "pass",
+      "detail": "missing source fields: none",
+      "assertion_ids": []
+    },
+    {
+      "rule_id": "QC-07-overbroad-language",
+      "result": "pass",
+      "detail": "0 assertion(s) use absolute wording with no recorded condition/scope",
+      "assertion_ids": []
+    },
+    {
+      "rule_id": "QC-08-locator-precision",
+      "result": "pass",
+      "detail": "0 verified span(s) have an empty or inverted character range",
+      "assertion_ids": []
+    },
+    {
+      "rule_id": "QC-09-duplicates",
+      "result": "pass",
+      "detail": "0 duplicated assertion(s)",
+      "assertion_ids": []
+    }
+  ],
+  "uncertainty": [
+    {
+      "item_id": "unc:cce9594830a5",
+      "kind": "not_reported_in_source",
+      "description": "The absolute BLEU of the unpruned baseline is not reported; only the 1.1 BLEU gap is. The baseline value is therefore left unstated rather than computed.",
+      "related_assertion_id": "asrt:61e134ca4962e2a3",
+      "human_takeover": "Ask the authors for the baseline number, or read it from the full results table if one exists."
+    },
+    {
+      "item_id": "unc:7cdb4b43598b",
+      "kind": "out_of_scope",
+      "description": "Statistical significance is explicitly not claimed by the text, so no significance assertion is emitted.",
+      "related_assertion_id": null,
+      "human_takeover": "Nothing to do; recorded so the absence is deliberate."
+    }
+  ]
+}

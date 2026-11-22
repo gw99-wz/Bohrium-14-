@@ -1,0 +1,24 @@
+{
+  "case_id": "example-minimal-01",
+  "instruction": "Decompose the supplied text into falsifiable assertions with evidence spans.",
+  "question": "What does the example claim, and what supports it?",
+  "title": "Synthetic example text for the minimal example",
+  "authors": ["Example Author"],
+  "year": 2026,
+  "venue": "none (synthetic)",
+  "materials": ["paper.txt"],
+  "output_contract": {
+    "fields": [
+      { "name": "case_id" },
+      { "name": "assertion" },
+      { "name": "subject_relation_object" },
+      { "name": "evidence_span" },
+      { "name": "evidence_locator" },
+      { "name": "source_metadata" },
+      { "name": "confidence_basis" },
+      { "name": "identifier" },
+      { "name": "run_status" },
+      { "name": "uncertainty" }
+    ]
+  }
+}

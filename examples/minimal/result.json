@@ -1,0 +1,487 @@
+{
+  "schema_version": "nanopub-reading-result/1.0",
+  "case_id": "example-minimal-01",
+  "task": {
+    "instruction": "Decompose the supplied text into falsifiable assertions with evidence spans.",
+    "question": "What does the example claim, and what supports it?",
+    "output_contract_fields": [
+      "case_id",
+      "assertion",
+      "subject_relation_object",
+      "evidence_span",
+      "evidence_locator",
+      "source_metadata",
+      "confidence_basis",
+      "identifier",
+      "run_status",
+      "uncertainty"
+    ],
+    "materials": [
+      "paper.txt"
+    ]
+  },
+  "run": {
+    "status": "success",
+    "status_reason": "all 5 assertion(s) carry verified evidence; 1 warning check(s)",
+    "pipeline_version": "nanopub-reading/1.0.0",
+    "started_at": "2026-11-22T13:55:20Z",
+    "finished_at": "2026-11-22T13:55:20Z",
+    "inputs": [
+      {
+        "path": "C:\\Users\\TYTX\\Documents\\deepseek-harness\\default-workspace\\Bohrium-14-\\examples\\minimal\\paper.txt",
+        "sha256": "522977e60aaf9520b62c9b26a6be1ff16da6442941509a61d0a4540b9cb35f62",
+        "kind": "text",
+        "bytes": 890
+      },
+      {
+        "path": "C:\\Users\\TYTX\\Documents\\deepseek-harness\\default-workspace\\Bohrium-14-\\examples\\minimal\\assertions.json",
+        "sha256": "3a6981810d3335bddecd8fbc1741f909ca3cb53ed7257895ae66489f8df8478e",
+        "kind": "assertions",
+        "bytes": 5602
+      }
+    ],
+    "counts": {
+      "assertions": 5,
+      "evidence_spans": 5,
+      "verified_spans": 5,
+      "unverified_spans": 0
+    },
+    "limits": {
+      "pages_read": [
+        1
+      ],
+      "pages_skipped": [],
+      "notes": [
+        "char offsets are Unicode code points into the page text of document.json",
+        "only pages present in document.json were searched"
+      ]
+    }
+  },
+  "source": {
+    "source_id": "src:1e31a361b515af24",
+    "title": "Synthetic example text for the minimal example",
+    "authors": [
+      "Example Author"
+    ],
+    "year": 2026,
+    "venue": "none (synthetic)",
+    "version": null,
+    "doi": null,
+    "url": null,
+    "document": {
+      "path": "C:\\Users\\TYTX\\Documents\\deepseek-harness\\default-workspace\\Bohrium-14-\\examples\\minimal\\paper.txt",
+      "sha256": "522977e60aaf9520b62c9b26a6be1ff16da6442941509a61d0a4540b9cb35f62",
+      "pages": 1,
+      "text_layer": true,
+      "extractor": "plain-text"
+    },
+    "missing_fields": []
+  },
+  "nanopublication": {
+    "id": "np:70b5a2a7f5ddf486",
+    "created_at": "2026-11-22T13:55:20Z",
+    "generator": "nanopub-reading/1.0.0",
+    "assertions": [
+      {
+        "assertion_id": "asrt:1b9371660de5d1f0",
+        "text": "PruneFormer reaches 26.8 BLEU on the development split of the example benchmark.",
+        "atomicity": {
+          "claim_count": 1,
+          "conditions_kept": [
+            "development split",
+            "small translation benchmark"
+          ],
+          "scope": "one benchmark"
+        },
+        "subject": {
+          "label": "PruneFormer",
+          "entity_type": "model",
+          "normalized": "pruneformer",
+          "identifiers": {}
+        },
+        "relation": {
+          "type": "achieves",
+          "vocabulary": "nanopub-relations/1.0",
+          "in_vocabulary": true
+        },
+        "object": {
+          "label": "26.8 BLEU",
+          "entity_type": "metric",
+          "normalized": null,
+          "identifiers": {}
+        },
+        "evidence": [
+          {
+            "evidence_id": "evd:a8532267237e2997",
+            "quote": "PruneFormer reaches 26.8 BLEU on the development split, which is 1.1 BLEU below the unpruned baseline.",
+            "locator": {
+              "page": 1,
+              "char_start": 309,
+              "char_end": 411,
+              "block_id": "b002",
+              "sentence_ids": [
+                "p001-b002s001"
+              ],
+              "section": null,
+              "figure_or_table": null
+            },
+            "evidence_type": "direct",
+            "verification": {
+              "verified": true,
+              "method": "exact_substring",
+              "detail": ""
+            }
+          }
+        ],
+        "confidence": {
+          "level": "high",
+          "basis": "The sentence states the score and the split directly.",
+          "derived_from": "direct_statement"
+        },
+        "provenance": {
+          "source_id": "src:1e31a361b515af24",
+          "paper_ref": "Synthetic example text for the minimal example",
+          "quoted_in_context": null
+        },
+        "notes": null
+      },
+      {
+        "assertion_id": "asrt:61e134ca4962e2a3",
+        "text": "The unpruned baseline outperforms PruneFormer by 1.1 BLEU on the development split.",
+        "atomicity": {
+          "claim_count": 1,
+          "conditions_kept": [
+            "development split"
+          ],
+          "scope": "one benchmark"
+        },
+        "subject": {
+          "label": "unpruned baseline",
+          "entity_type": "model",
+          "normalized": null,
+          "identifiers": {}
+        },
+        "relation": {
+          "type": "outperforms",
+          "vocabulary": "nanopub-relations/1.0",
+          "in_vocabulary": true
+        },
+        "object": {
+          "label": "PruneFormer",
+          "entity_type": "model",
+          "normalized": "pruneformer",
+          "identifiers": {}
+        },
+        "evidence": [
+          {
+            "evidence_id": "evd:4b0e95530d4c951d",
+            "quote": "PruneFormer reaches 26.8 BLEU on the development split, which is 1.1 BLEU below the unpruned baseline.",
+            "locator": {
+              "page": 1,
+              "char_start": 309,
+              "char_end": 411,
+              "block_id": "b002",
+              "sentence_ids": [
+                "p001-b002s001"
+              ],
+              "section": null,
+              "figure_or_table": null
+            },
+            "evidence_type": "direct",
+            "verification": {
+              "verified": true,
+              "method": "exact_substring",
+              "detail": ""
+            }
+          }
+        ],
+        "confidence": {
+          "level": "high",
+          "basis": "Stated as a gap of 1.1 BLEU below the unpruned baseline; direction inverted so that subject outperforms object.",
+          "derived_from": "direct_statement"
+        },
+        "provenance": {
+          "source_id": "src:1e31a361b515af24",
+          "paper_ref": "Synthetic example text for the minimal example",
+          "quoted_in_context": null
+        },
+        "notes": "The source sentence uses PruneFormer as the grammatical subject; the relation is expressed from the baseline's side to keep the direction faithful."
+      },
+      {
+        "assertion_id": "asrt:a9e8aa6807975bc4",
+        "text": "The pruning removes 38 percent of attention heads while keeping the parameter count unchanged.",
+        "atomicity": {
+          "claim_count": 1,
+          "conditions_kept": [
+            "parameter count unchanged"
+          ],
+          "scope": "one reported configuration"
+        },
+        "subject": {
+          "label": "attention-head pruning",
+          "entity_type": "method",
+          "normalized": null,
+          "identifiers": {}
+        },
+        "relation": {
+          "type": "reports",
+          "vocabulary": "nanopub-relations/1.0",
+          "in_vocabulary": true
+        },
+        "object": {
+          "label": "38 percent of attention heads removed",
+          "entity_type": "quantity",
+          "normalized": null,
+          "identifiers": {}
+        },
+        "evidence": [
+          {
+            "evidence_id": "evd:198145e68b9b813b",
+            "quote": "The pruning removes 38 percent of attention heads while keeping the parameter count unchanged.",
+            "locator": {
+              "page": 1,
+              "char_start": 412,
+              "char_end": 506,
+              "block_id": "b002",
+              "sentence_ids": [
+                "p001-b002s002"
+              ],
+              "section": null,
+              "figure_or_table": null
+            },
+            "evidence_type": "direct",
+            "verification": {
+              "verified": true,
+              "method": "exact_substring",
+              "detail": ""
+            }
+          }
+        ],
+        "confidence": {
+          "level": "high",
+          "basis": "Stated directly.",
+          "derived_from": "direct_statement"
+        },
+        "provenance": {
+          "source_id": "src:1e31a361b515af24",
+          "paper_ref": "Synthetic example text for the minimal example",
+          "quoted_in_context": null
+        },
+        "notes": null
+      },
+      {
+        "assertion_id": "asrt:4db06b49d27f2594",
+        "text": "Training used four GPUs for eighteen hours.",
+        "atomicity": {
+          "claim_count": 1,
+          "conditions_kept": [],
+          "scope": "reported compute budget"
+        },
+        "subject": {
+          "label": "training run",
+          "entity_type": "method",
+          "normalized": null,
+          "identifiers": {}
+        },
+        "relation": {
+          "type": "uses",
+          "vocabulary": "nanopub-relations/1.0",
+          "in_vocabulary": true
+        },
+        "object": {
+          "label": "four GPUs for eighteen hours",
+          "entity_type": "quantity",
+          "normalized": null,
+          "identifiers": {}
+        },
+        "evidence": [
+          {
+            "evidence_id": "evd:cbebc344df18d8d5",
+            "quote": "Training used four GPUs for eighteen hours.",
+            "locator": {
+              "page": 1,
+              "char_start": 508,
+              "char_end": 551,
+              "block_id": "b003",
+              "sentence_ids": [
+                "p001-b003s000"
+              ],
+              "section": null,
+              "figure_or_table": null
+            },
+            "evidence_type": "direct",
+            "verification": {
+              "verified": true,
+              "method": "exact_substring",
+              "detail": ""
+            }
+          }
+        ],
+        "confidence": {
+          "level": "high",
+          "basis": "Stated directly.",
+          "derived_from": "direct_statement"
+        },
+        "provenance": {
+          "source_id": "src:1e31a361b515af24",
+          "paper_ref": "Synthetic example text for the minimal example",
+          "quoted_in_context": null
+        },
+        "notes": null
+      },
+      {
+        "assertion_id": "asrt:9409229f9dcce512",
+        "text": "Head pruning itself causes the 1.1 BLEU gap, rather than the training budget.",
+        "atomicity": {
+          "claim_count": 1,
+          "conditions_kept": [
+            "ablation: pruning step removed"
+          ],
+          "scope": "one ablation result"
+        },
+        "subject": {
+          "label": "head pruning",
+          "entity_type": "method",
+          "normalized": null,
+          "identifiers": {}
+        },
+        "relation": {
+          "type": "causes",
+          "vocabulary": "nanopub-relations/1.0",
+          "in_vocabulary": true
+        },
+        "object": {
+          "label": "1.1 BLEU gap",
+          "entity_type": "quantity",
+          "normalized": null,
+          "identifiers": {}
+        },
+        "evidence": [
+          {
+            "evidence_id": "evd:8dfaee76c6b8e220",
+            "quote": "Removing the head-pruning step restores the lost BLEU, so the pruning itself explains the gap rather than the training budget.",
+            "locator": {
+              "page": 1,
+              "char_start": 632,
+              "char_end": 758,
+              "block_id": "b003",
+              "sentence_ids": [
+                "p001-b003s002"
+              ],
+              "section": null,
+              "figure_or_table": null
+            },
+            "evidence_type": "direct",
+            "verification": {
+              "verified": true,
+              "method": "exact_substring",
+              "detail": ""
+            }
+          }
+        ],
+        "confidence": {
+          "level": "medium",
+          "basis": "The sentence states the conclusion of an ablation but reports no separate numbers for the ablation run.",
+          "derived_from": "inference"
+        },
+        "provenance": {
+          "source_id": "src:1e31a361b515af24",
+          "paper_ref": "Synthetic example text for the minimal example",
+          "quoted_in_context": null
+        },
+        "notes": null
+      }
+    ]
+  },
+  "uncertainty": [
+    {
+      "item_id": "unc:cce9594830a5",
+      "kind": "not_reported_in_source",
+      "description": "The absolute BLEU of the unpruned baseline is not reported; only the 1.1 BLEU gap is. The baseline value is therefore left unstated rather than computed.",
+      "related_assertion_id": "asrt:61e134ca4962e2a3",
+      "human_takeover": "Ask the authors for the baseline number, or read it from the full results table if one exists."
+    },
+    {
+      "item_id": "unc:7cdb4b43598b",
+      "kind": "out_of_scope",
+      "description": "Statistical significance is explicitly not claimed by the text, so no significance assertion is emitted.",
+      "related_assertion_id": null,
+      "human_takeover": "Nothing to do; recorded so the absence is deliberate."
+    }
+  ],
+  "quality_control": {
+    "ruleset_version": "qc/1.0",
+    "checks": [
+      {
+        "rule_id": "QC-01-atomicity",
+        "result": "pass",
+        "detail": "0 assertion(s) look like more than one claim (claim_count>1, >320 chars, or several sentence endings)",
+        "assertion_ids": []
+      },
+      {
+        "rule_id": "QC-02-evidence-present",
+        "result": "pass",
+        "detail": "0 assertion(s) carry no evidence span",
+        "assertion_ids": []
+      },
+      {
+        "rule_id": "QC-03-evidence-verified",
+        "result": "pass",
+        "detail": "0 assertion(s) have at least one unverified span; 0 have none verified",
+        "assertion_ids": []
+      },
+      {
+        "rule_id": "QC-04-relation-vocabulary",
+        "result": "pass",
+        "detail": "0 assertion(s) use a relation outside the controlled vocabulary",
+        "assertion_ids": []
+      },
+      {
+        "rule_id": "QC-05-subject-in-evidence",
+        "result": "warn",
+        "detail": "3 assertion(s): subject label not literally present in its evidence (possible subject/relation confusion)",
+        "assertion_ids": [
+          "asrt:a9e8aa6807975bc4",
+          "asrt:4db06b49d27f2594",
+          "asrt:9409229f9dcce512"
+        ]
+      },
+      {
+        "rule_id": "QC-06-provenance-complete",
+        "result": "pass",
+        "detail": "missing source fields: none",
+        "assertion_ids": []
+      },
+      {
+        "rule_id": "QC-07-overbroad-language",
+        "result": "pass",
+        "detail": "0 assertion(s) use absolute wording with no recorded condition/scope",
+        "assertion_ids": []
+      },
+      {
+        "rule_id": "QC-08-locator-precision",
+        "result": "pass",
+        "detail": "0 verified span(s) have an empty or inverted character range",
+        "assertion_ids": []
+      },
+      {
+        "rule_id": "QC-09-duplicates",
+        "result": "pass",
+        "detail": "0 duplicated assertion(s)",
+        "assertion_ids": []
+      }
+    ],
+    "summary": {
+      "pass": 8,
+      "warn": 1,
+      "fail": 0
+    }
+  },
+  "change_log": [
+    {
+      "at": "2026-11-22T13:55:20Z",
+      "change": "built result from 5 declared assertion(s)",
+      "reason": "pipeline nanopub-reading/1.0.0"
+    }
+  ]
+}

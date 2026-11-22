@@ -1,0 +1,6 @@
+assertion_id,assertion,subject,relation,object,page,char_start,char_end,verified,method,confidence
+asrt:1b9371660de5d1f0,PruneFormer reaches 26.8 BLEU on the development split of the example benchmark.,PruneFormer,achieves,26.8 BLEU,1,309,411,true,exact_substring,high
+asrt:61e134ca4962e2a3,The unpruned baseline outperforms PruneFormer by 1.1 BLEU on the development split.,unpruned baseline,outperforms,PruneFormer,1,309,411,true,exact_substring,high
+asrt:a9e8aa6807975bc4,The pruning removes 38 percent of attention heads while keeping the parameter count unchanged.,attention-head pruning,reports,38 percent of attention heads removed,1,412,506,true,exact_substring,high
+asrt:4db06b49d27f2594,Training used four GPUs for eighteen hours.,training run,uses,four GPUs for eighteen hours,1,508,551,true,exact_substring,high
+asrt:9409229f9dcce512,"Head pruning itself causes the 1.1 BLEU gap, rather than the training budget.",head pruning,causes,1.1 BLEU gap,1,632,758,true,exact_substring,medium

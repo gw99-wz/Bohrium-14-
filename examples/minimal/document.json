@@ -1,0 +1,138 @@
+{
+  "schema_version": "nanopub-document/1.0",
+  "extracted_at": "2026-11-22T13:55:09Z",
+  "pipeline_version": "nanopub-reading/1.0.0",
+  "input": {
+    "path": "C:\\Users\\TYTX\\Documents\\deepseek-harness\\default-workspace\\Bohrium-14-\\examples\\minimal\\paper.txt",
+    "filename": "paper.txt",
+    "bytes": 890,
+    "sha256": "522977e60aaf9520b62c9b26a6be1ff16da6442941509a61d0a4540b9cb35f62",
+    "kind": "text"
+  },
+  "extractor": "plain-text",
+  "metadata": {
+    "title": null,
+    "authors": [],
+    "year": null,
+    "venue": null,
+    "doi": null,
+    "url": null,
+    "pdf_producer": null,
+    "pdf_creation_date": null
+  },
+  "document": {
+    "pages": 1,
+    "text_layer": true,
+    "total_chars": 887
+  },
+  "pages": [
+    {
+      "page": 1,
+      "char_length": 887,
+      "text": "SYNTHETIC EXAMPLE — NOT REAL RESEARCH\n\nThis paragraph is written for the example only. The numbers and the study are invented so that the example can be shipped without any third-party text.\n\nWe introduce a depth-pruned transformer variant called PruneFormer and evaluate it on a small translation benchmark. PruneFormer reaches 26.8 BLEU on the development split, which is 1.1 BLEU below the unpruned baseline. The pruning removes 38 percent of attention heads while keeping the parameter count unchanged.\n\nTraining used four GPUs for eighteen hours. We report the median over five seeds and do not claim statistical significance. Removing the head-pruning step restores the lost BLEU, so the pruning itself explains the gap rather than the training budget.\n\nWe conclude that depth pruning costs 1.1 BLEU in this setting and we do not claim that the cost transfers to larger benchmarks.",
+      "blocks": [
+        {
+          "block_id": "b000",
+          "text": "SYNTHETIC EXAMPLE — NOT REAL RESEARCH",
+          "char_start": 0,
+          "char_end": 37,
+          "sentences": [
+            {
+              "sentence_id": "p001-b000s000",
+              "text": "SYNTHETIC EXAMPLE — NOT REAL RESEARCH",
+              "char_start": 0,
+              "char_end": 37
+            }
+          ]
+        },
+        {
+          "block_id": "b001",
+          "text": "This paragraph is written for the example only. The numbers and the study are invented so that the example can be shipped without any third-party text.",
+          "char_start": 39,
+          "char_end": 190,
+          "sentences": [
+            {
+              "sentence_id": "p001-b001s000",
+              "text": "This paragraph is written for the example only.",
+              "char_start": 39,
+              "char_end": 86
+            },
+            {
+              "sentence_id": "p001-b001s001",
+              "text": "The numbers and the study are invented so that the example can be shipped without any third-party text.",
+              "char_start": 87,
+              "char_end": 190
+            }
+          ]
+        },
+        {
+          "block_id": "b002",
+          "text": "We introduce a depth-pruned transformer variant called PruneFormer and evaluate it on a small translation benchmark. PruneFormer reaches 26.8 BLEU on the development split, which is 1.1 BLEU below the unpruned baseline. The pruning removes 38 percent of attention heads while keeping the parameter count unchanged.",
+          "char_start": 192,
+          "char_end": 506,
+          "sentences": [
+            {
+              "sentence_id": "p001-b002s000",
+              "text": "We introduce a depth-pruned transformer variant called PruneFormer and evaluate it on a small translation benchmark.",
+              "char_start": 192,
+              "char_end": 308
+            },
+            {
+              "sentence_id": "p001-b002s001",
+              "text": "PruneFormer reaches 26.8 BLEU on the development split, which is 1.1 BLEU below the unpruned baseline.",
+              "char_start": 309,
+              "char_end": 411
+            },
+            {
+              "sentence_id": "p001-b002s002",
+              "text": "The pruning removes 38 percent of attention heads while keeping the parameter count unchanged.",
+              "char_start": 412,
+              "char_end": 506
+            }
+          ]
+        },
+        {
+          "block_id": "b003",
+          "text": "Training used four GPUs for eighteen hours. We report the median over five seeds and do not claim statistical significance. Removing the head-pruning step restores the lost BLEU, so the pruning itself explains the gap rather than the training budget.",
+          "char_start": 508,
+          "char_end": 758,
+          "sentences": [
+            {
+              "sentence_id": "p001-b003s000",
+              "text": "Training used four GPUs for eighteen hours.",
+              "char_start": 508,
+              "char_end": 551
+            },
+            {
+              "sentence_id": "p001-b003s001",
+              "text": "We report the median over five seeds and do not claim statistical significance.",
+              "char_start": 552,
+              "char_end": 631
+            },
+            {
+              "sentence_id": "p001-b003s002",
+              "text": "Removing the head-pruning step restores the lost BLEU, so the pruning itself explains the gap rather than the training budget.",
+              "char_start": 632,
+              "char_end": 758
+            }
+          ]
+        },
+        {
+          "block_id": "b004",
+          "text": "We conclude that depth pruning costs 1.1 BLEU in this setting and we do not claim that the cost transfers to larger benchmarks.",
+          "char_start": 760,
+          "char_end": 887,
+          "sentences": [
+            {
+              "sentence_id": "p001-b004s000",
+              "text": "We conclude that depth pruning costs 1.1 BLEU in this setting and we do not claim that the cost transfers to larger benchmarks.",
+              "char_start": 760,
+              "char_end": 887
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "warnings": []
+}

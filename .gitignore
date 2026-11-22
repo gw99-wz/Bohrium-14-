@@ -4,7 +4,10 @@ __pycache__/
 .venv/
 venv/
 
-# Local scratch / platform materials (pulled by the Playground CLI, not part of the work)
+# Test scratch (tests/run_tests.py writes here)
+.test-work/
+
+# Local scratch / platform materials pulled by the Playground CLI
 /bohr-product-task/
 *.log
 

@@ -1,0 +1,330 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/gw99-wz/Bohrium-14-/schemas/result.schema.json",
+  "title": "Nanopublication reading result",
+  "description": "Structured, replaysafe result of one reading case: assertions, subject-relation-object, evidence spans, locators, source metadata, confidence basis and identifiers.",
+  "type": "object",
+  "required": ["schema_version", "case_id", "run", "source", "nanopublication", "uncertainty", "change_log"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": { "const": "nanopub-reading-result/1.0" },
+    "case_id": { "type": "string", "minLength": 1 },
+    "task": {
+      "type": "object",
+      "description": "Echo of what this case asked for, so the result is self-describing.",
+      "additionalProperties": false,
+      "properties": {
+        "instruction": { "type": "string" },
+        "question": { "type": "string" },
+        "output_contract_fields": { "type": "array", "items": { "type": "string" } },
+        "materials": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "run": {
+      "type": "object",
+      "required": ["status", "status_reason", "pipeline_version", "started_at", "finished_at", "inputs", "counts"],
+      "additionalProperties": false,
+      "properties": {
+        "status": { "$ref": "#/$defs/run_status" },
+        "status_reason": { "type": "string", "minLength": 1 },
+        "pipeline_version": { "type": "string" },
+        "started_at": { "type": "string" },
+        "finished_at": { "type": "string" },
+        "inputs": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["path", "sha256", "kind"],
+            "additionalProperties": false,
+            "properties": {
+              "path": { "type": "string" },
+              "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+              "kind": { "type": "string" },
+              "bytes": { "type": "integer", "minimum": 0 }
+            }
+          }
+        },
+        "counts": {
+          "type": "object",
+          "required": ["assertions", "evidence_spans", "verified_spans", "unverified_spans"],
+          "additionalProperties": false,
+          "properties": {
+            "assertions": { "type": "integer", "minimum": 0 },
+            "evidence_spans": { "type": "integer", "minimum": 0 },
+            "verified_spans": { "type": "integer", "minimum": 0 },
+            "unverified_spans": { "type": "integer", "minimum": 0 }
+          }
+        },
+        "limits": {
+          "type": "object",
+          "description": "What this run did NOT do, stated by the producing pipeline.",
+          "additionalProperties": false,
+          "properties": {
+            "pages_read": { "type": "array", "items": { "type": "integer", "minimum": 1 } },
+            "pages_skipped": { "type": "array", "items": { "type": "integer", "minimum": 1 } },
+            "notes": { "type": "array", "items": { "type": "string" } }
+          }
+        }
+      }
+    },
+    "source": {
+      "type": "object",
+      "description": "Provenance layer: the paper this nanopublication is derived from.",
+      "required": ["source_id", "document"],
+      "additionalProperties": false,
+      "properties": {
+        "source_id": { "type": "string", "pattern": "^src:[0-9a-f]{16}$" },
+        "title": { "type": ["string", "null"] },
+        "authors": { "type": "array", "items": { "type": "string" } },
+        "year": { "type": ["integer", "null"] },
+        "venue": { "type": ["string", "null"] },
+        "version": { "type": ["string", "null"] },
+        "doi": { "type": ["string", "null"] },
+        "url": { "type": ["string", "null"] },
+        "document": {
+          "type": "object",
+          "required": ["path", "sha256", "pages", "text_layer"],
+          "additionalProperties": false,
+          "properties": {
+            "path": { "type": "string" },
+            "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+            "pages": { "type": "integer", "minimum": 0 },
+            "text_layer": { "type": "boolean" },
+            "extractor": { "type": "string" }
+          }
+        },
+        "missing_fields": {
+          "type": "array",
+          "description": "Provenance fields absent from the document itself; never guessed.",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "nanopublication": {
+      "type": "object",
+      "required": ["id", "created_at", "assertions"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "pattern": "^np:[0-9a-f]{16}$" },
+        "created_at": { "type": "string" },
+        "generator": { "type": "string" },
+        "assertions": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/assertion" }
+        }
+      }
+    },
+    "uncertainty": {
+      "type": "array",
+      "description": "Every place the material did not settle the question. Never silently dropped.",
+      "items": {
+        "type": "object",
+        "required": ["item_id", "kind", "description"],
+        "additionalProperties": false,
+        "properties": {
+          "item_id": { "type": "string", "pattern": "^unc:[0-9a-f]{12}$" },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "not_reported_in_source",
+              "conflicting_statements",
+              "evidence_not_found",
+              "ambiguous_subject",
+              "partial_page_coverage",
+              "no_text_layer",
+              "out_of_scope"
+            ]
+          },
+          "description": { "type": "string", "minLength": 1 },
+          "related_assertion_id": { "type": ["string", "null"] },
+          "related_locator": { "$ref": "#/$defs/locator" },
+          "human_takeover": { "type": "string" }
+        }
+      }
+    },
+    "quality_control": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "ruleset_version": { "type": "string" },
+        "checks": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["rule_id", "result"],
+            "additionalProperties": false,
+            "properties": {
+              "rule_id": { "type": "string" },
+              "result": { "type": "string", "enum": ["pass", "warn", "fail", "not_applicable"] },
+              "detail": { "type": "string" },
+              "assertion_ids": { "type": "array", "items": { "type": "string" } }
+            }
+          }
+        },
+        "summary": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "pass": { "type": "integer", "minimum": 0 },
+            "warn": { "type": "integer", "minimum": 0 },
+            "fail": { "type": "integer", "minimum": 0 }
+          }
+        }
+      }
+    },
+    "change_log": {
+      "type": "array",
+      "description": "Editable-artifact trail: what the run added, corrected or refused to change.",
+      "items": {
+        "type": "object",
+        "required": ["at", "change"],
+        "additionalProperties": false,
+        "properties": {
+          "at": { "type": "string" },
+          "change": { "type": "string" },
+          "reason": { "type": "string" }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "run_status": {
+      "type": "string",
+      "enum": ["success", "partial", "uncertain", "refused"],
+      "description": "success: every assertion carries verified evidence. partial: produced real output with declared gaps. uncertain: material did not settle the questions. refused: input unusable, nothing asserted."
+    },
+    "locator": {
+      "type": "object",
+      "description": "Where in the source. page + char offsets are the machine-checkable part; block/sentence are human-navigable.",
+      "required": ["page", "char_start", "char_end"],
+      "additionalProperties": false,
+      "properties": {
+        "page": { "type": "integer", "minimum": 1 },
+        "char_start": { "type": "integer", "minimum": 0 },
+        "char_end": { "type": "integer", "minimum": 0 },
+        "block_id": { "type": ["string", "null"] },
+        "sentence_ids": { "type": "array", "items": { "type": "string" } },
+        "section": { "type": ["string", "null"] },
+        "figure_or_table": { "type": ["string", "null"] }
+      }
+    },
+    "assertion": {
+      "type": "object",
+      "required": [
+        "assertion_id",
+        "text",
+        "subject",
+        "relation",
+        "object",
+        "evidence",
+        "confidence",
+        "provenance"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "assertion_id": { "type": "string", "pattern": "^asrt:[0-9a-f]{16}$" },
+        "text": {
+          "type": "string",
+          "minLength": 1,
+          "description": "One falsifiable claim. Conditions preserved, no bundling of two claims."
+        },
+        "atomicity": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "claim_count": { "type": "integer", "minimum": 1 },
+            "conditions_kept": { "type": "array", "items": { "type": "string" } },
+            "scope": { "type": ["string", "null"] }
+          }
+        },
+        "subject": { "$ref": "#/$defs/entity" },
+        "relation": {
+          "type": "object",
+          "required": ["type", "vocabulary"],
+          "additionalProperties": false,
+          "properties": {
+            "type": { "type": "string", "minLength": 1 },
+            "vocabulary": { "type": "string" },
+            "in_vocabulary": { "type": "boolean" }
+          }
+        },
+        "object": { "$ref": "#/$defs/entity" },
+        "evidence": {
+          "type": "array",
+          "minItems": 0,
+          "items": {
+            "type": "object",
+            "required": ["evidence_id", "quote", "locator", "evidence_type", "verification"],
+            "additionalProperties": false,
+            "properties": {
+              "evidence_id": { "type": "string", "pattern": "^evd:[0-9a-f]{16}$" },
+              "quote": {
+                "type": "string",
+                "description": "Minimal sufficient span, copied from the document, not paraphrased."
+              },
+              "locator": { "$ref": "#/$defs/locator" },
+              "evidence_type": {
+                "type": "string",
+                "enum": ["direct", "indirect_inference", "tabular", "figure_caption", "meta_claim"]
+              },
+              "verification": {
+                "type": "object",
+                "required": ["verified", "method"],
+                "additionalProperties": false,
+                "properties": {
+                  "verified": { "type": "boolean" },
+                  "method": {
+                    "type": "string",
+                    "enum": ["exact_substring", "whitespace_normalized", "reported_not_found", "unchecked"]
+                  },
+                  "detail": { "type": "string" }
+                }
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "object",
+          "required": ["level", "basis"],
+          "additionalProperties": false,
+          "properties": {
+            "level": { "type": "string", "enum": ["high", "medium", "low"] },
+            "basis": { "type": "string", "minLength": 1 },
+            "derived_from": {
+              "type": "string",
+              "enum": ["direct_statement", "table_or_figure", "multi_span_synthesis", "inference", "agent_judgement"]
+            }
+          }
+        },
+        "provenance": {
+          "type": "object",
+          "required": ["source_id"],
+          "additionalProperties": false,
+          "properties": {
+            "source_id": { "type": "string", "pattern": "^src:[0-9a-f]{16}$" },
+            "paper_ref": { "type": ["string", "null"] },
+            "quoted_in_context": { "type": ["string", "null"] }
+          }
+        },
+        "notes": { "type": ["string", "null"] }
+      }
+    },
+    "entity": {
+      "type": "object",
+      "required": ["label"],
+      "additionalProperties": false,
+      "properties": {
+        "label": { "type": "string", "minLength": 1 },
+        "entity_type": {
+          "type": "string",
+          "enum": ["model", "dataset", "metric", "phenomenon", "method", "organism", "material", "quantity", "system", "other"]
+        },
+        "normalized": { "type": ["string", "null"] },
+        "identifiers": {
+          "type": "object",
+          "additionalProperties": { "type": "string" }
+        }
+      }
+    }
+  }
+}
