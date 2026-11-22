@@ -1,0 +1,13 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Local scratch / platform materials (pulled by the Playground CLI, not part of the work)
+/bohr-product-task/
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
